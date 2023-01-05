@@ -4206,21 +4206,21 @@
     color: #949ca0;
     text-transform: uppercase;
 }
-.social-box.facebook i {
+.social-box.treated i {
     color: #fff;
-    background: #3b5998;
+    background: #f0ae08;
 }
-.social-box.twitter i {
+.social-box.confirmed i {
     color: #fff;
-    background: #00aced;
+    background: #999;
 }
-.social-box.linkedin i {
+.social-box.healed i {
     color: #fff;
-    background: #4875b4;
+    background: #009900;
 }
-.social-box.google-plus i {
+.social-box.die i {
     color: #fff;
-    background: #d34836;
+    background: #ec2224;
 }
 
 .horizontal-bars {
@@ -4388,23 +4388,23 @@
     width: 1.8125rem;
     line-height: 2;
 }
-.social.facebook {
-    background: #3b5998;
+.social.treated {
+    background: #f0ae08;
 }
-.social.facebook:hover {
-    background: #344e86;
+.social.treated:hover {
+    background: #f0ae08;
 }
-.social.twitter {
-    background: #00aced;
+.social.confirmed {
+    background: #999;
 }
-.social.twitter:hover {
-    background: #0099d4;
+.social.confirmed:hover {
+    background: #999;
 }
-.social.linkedin {
-    background: #4875b4;
+.social.healed {
+    background: #009900;
 }
-.social.linkedin:hover {
-    background: #4169a2;
+.social.healed:hover {
+    background: #009900;
 }
 .social.flickr {
     background: #ff0084;
@@ -4472,11 +4472,11 @@
 .social.dropbox:hover {
     background: #0070cc;
 }
-.social.google-plus {
-    background: #d34836;
+.social.die {
+    background: #ec2224;
 }
-.social.google-plus:hover {
-    background: #c43d2b;
+.social.die:hover {
+    background: #ec2224;
 }
 .social.instagram {
     background: #517fa4;
@@ -5693,18 +5693,18 @@ header .form-inline .search-form.close {
 .social-button {
     padding: 0 30px;
 }
-.social-button .facebook {
-    background: #3b5998;
+.social-button .treated {
+    background: #f0ae08;
     color: #fff;
 }
-.social-button .facebook:hover {
-    background: #344e86;
+.social-button .treated:hover {
+    background: #f0ae08;
 }
-.social-button .twitter {
+.social-button .confirmed {
     background: #00aced;
     color: #fff;
 }
-.social-button .twitter:hover {
+.social-button .confirmed:hover {
     background: #0099d4;
 }
 
