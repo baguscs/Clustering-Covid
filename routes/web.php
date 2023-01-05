@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/login-page', function () {
     return view('login_page');
-});
-Route::get('/template', function () {
-    return view('dashboard.index');
-});
+})->name('login_page');
+
+Route::get('LogoutSystem', [AuthController::class, 'logout'])->name('logoutSystem');
+// Route::get('/template', function () {
+//     return view('dashboard.index');
+// });
 
 Route::middleware([
     'auth:sanctum',
@@ -29,6 +29,6 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('dashboard.index');
     })->name('dashboard');
 });

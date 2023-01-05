@@ -24,14 +24,20 @@
                 <p class="name-app">SIDAVID</p>
                 <div class="card">
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            @error('email')
+                                <div class="alert alert-danger" role="alert">
+                                    Akun tidak dikenal, mohon cek Email dan Password!
+                                </div>
+                            @enderror
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Email">
+                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Password">
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Password" required>
                             </div>
                             <button type="submit" class="btn btn-block btn-primary">Login</button>
                         </form>
