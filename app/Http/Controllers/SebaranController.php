@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sebaran;
+use App\Models\Provinsi;
 
 class SebaranController extends Controller
 {
@@ -13,7 +15,9 @@ class SebaranController extends Controller
      */
     public function index()
     {
-        //
+        $nav = "active";
+        $data = Sebaran::all();
+        return view("dashboard.sebaran.index", compact("nav", 'data'));
     }
 
     /**
@@ -23,7 +27,9 @@ class SebaranController extends Controller
      */
     public function create()
     {
-        //
+        $nav = "active";
+        $data = Provinsi::where("status", "!=", "1")->get();
+        return view("dashboard.sebaran.add", compact("nav", 'data'));
     }
 
     /**

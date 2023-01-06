@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SebaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,9 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard.index');
+        $nav = "active";
+        return view('dashboard.index', compact('nav'));
     })->name('dashboard');
+
+    Route::resource('sebaran', SebaranController::class);
 });

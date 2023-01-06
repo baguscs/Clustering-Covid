@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Sebaran extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'provinsis_id', 'treated', 'confirmation', 'healed', 'die'
+    ];
 }

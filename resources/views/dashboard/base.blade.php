@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('vendors/jqvmap/dist/jqvmap.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    @stack('css')
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 </head>
@@ -35,21 +36,21 @@
             </div>
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    <li class="@stack('navDashboard')">
+                        <a href="{{ route('dashboard') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title">Data Master</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
+                    <li class="menu-item-has-children @stack('navSebaran') dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Sebaran</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Tambah Data</a></li>
-                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Lihat Data</a></li>
+                            <li><i class="fa fa-plus-square"></i><a href="{{ route('sebaran.create') }}">Tambah Data</a></li>
+                            <li><i class="fa fa-puzzle-piece"></i><a href="{{ route('sebaran.index') }}">Lihat Data</a></li>
                         </ul>
                     </li>
 
                     <h3 class="menu-title">Analisis</h3><!-- /.menu-title -->
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Hitung Sebaran </a>
+                        <a href="widgets.html"> <i class="menu-icon fa fa-search"></i>Hitung Sebaran </a>
                     </li>
                     <li>
                         <a href="widgets.html"> <i class="menu-icon fa fa-line-chart"></i>Grafik</a>
@@ -76,8 +77,8 @@
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                        <a href="#" class="dropdown-toggle" style="margin-top: 20px" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span style="margin-top: 10px">{{ Auth::user()->name }}</span>&nbsp; <i class="fa fa-sort-desc"></i>
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -106,34 +107,7 @@
     <script src="{{ asset('vendors/popper.js/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-
-
-    <script src="{{ asset('vendors/chart.js/dist/Chart.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/js/init-scripts/chart-js/chartjs-init.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
-    <script src="{{ asset('assets/js/widgets.js') }}"></script>
-    <script src="{{ asset('vendors/jqvmap/dist/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('vendors/jqvmap/examples/js/jquery.vmap.sampledata.js') }}"></script>
-    <script src="{{ asset('vendors/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
-    <script>
-        (function($) {
-            "use strict";
-
-            jQuery('#vmap').vectorMap({
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: ['#1de9b6', '#03a9f5'],
-                normalizeFunction: 'polynomial'
-            });
-        })(jQuery);
-    </script>
-
+    @stack('js')
 </body>
 
 </html>
