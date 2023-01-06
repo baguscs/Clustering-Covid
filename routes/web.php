@@ -19,9 +19,6 @@ Route::get('/', function () {
 })->name('login_page');
 
 Route::get('LogoutSystem', [AuthController::class, 'logout'])->name('logoutSystem');
-// Route::get('/template', function () {
-//     return view('dashboard.index');
-// });
 
 Route::middleware([
     'auth:sanctum',
