@@ -9,7 +9,19 @@ class Sebaran extends Model
 {
     use HasFactory;
 
+    protected $table = "sebarans";
     protected $fillable = [
-        'provinsis_id', 'treated', 'confirmation', 'healed', 'die'
+        'provinsi_id', 'treated', 'confirmation', 'healed', 'die'
     ];
+    protected $guarded = ['id'];
+
+    /**
+     * Get the provinsi that owns the Sebaran
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function provinsi()
+    {
+        return $this->belongsTo(Provinsi::class, 'provinsi_id');
+    }
 }

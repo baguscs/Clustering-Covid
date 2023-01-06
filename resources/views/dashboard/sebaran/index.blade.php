@@ -20,11 +20,20 @@
             </div>
         </div>
     </div>
+    @if (session()->has('message'))
+        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+            <span class="badge badge-pill badge-success">Success</span>
+            {{ session()->get('message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    
 
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
@@ -42,14 +51,18 @@
                                 <tbody>
                                     @foreach ($data as $item)
                                         <tr>
-                                            <td>{{ $item->provinsis_id }}</td>
+                                            <td>{{ $item->provinsi->name }}</td>
                                             <td>{{ $item->treated }}</td>
                                             <td>{{ $item->confirmation }}</td>
                                             <td>{{ $item->healed }}</td>
                                             <td>{{ $item->die }}</td>
                                             <td>
-                                                <a href="" class="btn btn-info" title="Edit Data"><i class="fa fa-info"></i></a>
-                                                <a href="" class="btn btn-danger" title="Hapus Data"><i class="fa fa-trash"></i></a>
+                                                <form action="{{ route('sebaran.destroy', $item->id) }}" method="post">
+                                                    <a href="{{ route('sebaran.edit', $item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
+                                                    @csrf
+                                                     @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data dari Provinsi {{ $item->provinsi->name }}')" title="Hapus Data"><i class="fa fa-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

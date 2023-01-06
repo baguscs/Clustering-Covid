@@ -40,7 +40,22 @@ class SebaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'provinsi_id' => 'required',
+            'treated' => 'required',
+            'confirmation' => 'required',
+            'healed' => 'required',
+            'die' => 'required',
+        ]);
+
+        $new = Sebaran::create($request->all());
+
+        $update = Provinsi::where('id', $request->provinsi_id)->firstOrFail();
+
+        $update->status = 1;
+        $update->save();
+
+        return redirect()->route('sebaran.index')->with('message', 'Berhasil Menambah Data Sebaran');
     }
 
     /**
@@ -60,9 +75,11 @@ class SebaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Sebaran $sebaran)
     {
-        //
+        $nav = "active";
+        $data = Provinsi::all();
+        return view("dashboard.sebaran.edit", compact("nav", "sebaran", "data"));
     }
 
     /**
@@ -72,9 +89,17 @@ class SebaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Sebaran $sebaran)
     {
-        //
+        $validation = $request->validate([
+            'treated' => 'required',
+            'confirmation' => 'required',
+            'healed' => 'required',
+            'die' => 'required',
+        ]);
+
+        $sebaran->update($request->all());
+        return redirect()->route('sebaran.index')->with('message', 'Berhasil Mengedit Data Sebaran');
     }
 
     /**
@@ -83,8 +108,14 @@ class SebaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Sebaran $sebaran)
     {
-        //
+        $update = Provinsi::where('id', $sebaran->id)->firstOrFail();
+
+        $update->status = 0;
+        $update->save();
+
+        $sebaran->delete();
+        return redirect()->back()->with('message', 'Berhasil Mengahapus Data Sebaran');
     }
 }
