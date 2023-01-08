@@ -26,10 +26,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        $nav = "active";
-        return view('dashboard.index', compact('nav'));
-    })->name('dashboard');
+    Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
     Route::resource('sebaran', SebaranController::class);
 });

@@ -52,9 +52,6 @@
                     <li>
                         <a href="widgets.html"> <i class="menu-icon fa fa-search"></i>Hitung Sebaran </a>
                     </li>
-                    <li>
-                        <a href="widgets.html"> <i class="menu-icon fa fa-line-chart"></i>Grafik</a>
-                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

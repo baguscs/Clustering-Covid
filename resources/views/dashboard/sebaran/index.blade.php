@@ -20,6 +20,7 @@
             </div>
         </div>
     </div>
+    
     @if (session()->has('message'))
         <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
             <span class="badge badge-pill badge-success">Success</span>
