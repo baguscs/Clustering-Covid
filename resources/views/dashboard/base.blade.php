@@ -8,8 +8,8 @@
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+    {{-- <link rel="apple-touch-icon" href="apple-icon.png"> --}}
+    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
 
     <link rel="stylesheet" href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/font-awesome/css/font-awesome.min.css') }}">
@@ -32,7 +32,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <p class="navbar-brand">SIDAVID</p>
-                <p class="navbar-brand hidden">S</p>
+                <p class="navbar-brand hidden"><img src="{{ asset('images/logo.png') }}" alt=""></p>
             </div>
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
