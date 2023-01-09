@@ -39,6 +39,7 @@ class ResultController extends Controller
         $dieCluster3 = $getDataRandom[2]->die;
 
         $looping = TRUE;
+        $count = 0;
 
         while ($looping == TRUE) {
             foreach ($collectData as $key => $value) {
@@ -60,19 +61,16 @@ class ResultController extends Controller
             $findMinResult = min($distanceCluster1, $distanceCluster2, $distanceCluster3);
 
             if ($findMinResult == $distanceCluster1) {
-
                 DB::table('sebarans')->where('id', $value->id)->update([
                     'cluster_id' => 1,
                 ]);
             }
             else if($findMinResult == $distanceCluster2){
-
                 DB::table('sebarans')->where('id', $value->id)->update([
                     'cluster_id' => 2,
                 ]);
             }
             else if($findMinResult == $distanceCluster3){
-
                 DB::table('sebarans')->where('id', $value->id)->update([
                     'cluster_id' => 3,
                 ]);
@@ -97,10 +95,10 @@ class ResultController extends Controller
             $diec1 += $value->die;
         }
 
-        $avgTreatedC1 = $treatedc1 / Sebaran::where('cluster_id', 1)->count();
-        $avgConfirmC1 = $confirmcc1 / Sebaran::where('cluster_id', 1)->count();
-        $avgHealedC1 = $healedc1 / Sebaran::where('cluster_id', 1)->count();
-        $avgDieC1 = $diec1 / Sebaran::where('cluster_id', 1)->count();
+        $avgTreatedC1 = round($treatedc1 / Sebaran::where('cluster_id', 1)->count(), 2);
+        $avgConfirmC1 = round($confirmcc1 / Sebaran::where('cluster_id', 1)->count(), 2);
+        $avgHealedC1 = round($healedc1 / Sebaran::where('cluster_id', 1)->count(), 2);
+        $avgDieC1 = round($diec1 / Sebaran::where('cluster_id', 1)->count(), 2);
         
         // hitung ulang centroid cluster 2
         $treatedc2 = 0;
@@ -115,10 +113,10 @@ class ResultController extends Controller
             $diec2 += $value->die;
         }
 
-        $avgTreatedC2 = $treatedc2 / Sebaran::where('cluster_id', 2)->count();
-        $avgConfirmC2 = $confirmcc2 / Sebaran::where('cluster_id', 2)->count();
-        $avgHealedC2 = $healedc2 / Sebaran::where('cluster_id', 2)->count();
-        $avgDieC2 = $diec2 / Sebaran::where('cluster_id', 2)->count();
+        $avgTreatedC2 = round($treatedc2 / Sebaran::where('cluster_id', 2)->count(), 2);
+        $avgConfirmC2 = round($confirmcc2 / Sebaran::where('cluster_id', 2)->count(), 2);
+        $avgHealedC2 = round($healedc2 / Sebaran::where('cluster_id', 2)->count(), 2);
+        $avgDieC2 = round($diec2 / Sebaran::where('cluster_id', 2)->count(), 2);
         
         // hitung ulang centroid cluster 3
         $treatedc3 = 0;
@@ -133,10 +131,10 @@ class ResultController extends Controller
             $diec3 += $value->die;
         }
 
-        $avgTreatedC3 = $treatedc3 / Sebaran::where('cluster_id', 3)->count();
-        $avgConfirmC3 = $confirmcc3 / Sebaran::where('cluster_id', 3)->count();
-        $avgHealedC3 = $healedc3 / Sebaran::where('cluster_id', 3)->count();
-        $avgDieC3 = $diec3 / Sebaran::where('cluster_id', 3)->count();
+        $avgTreatedC3 = round($treatedc3 / Sebaran::where('cluster_id', 3)->count(), 2);
+        $avgConfirmC3 = round($confirmcc3 / Sebaran::where('cluster_id', 3)->count(), 2);
+        $avgHealedC3 = round($healedc3 / Sebaran::where('cluster_id', 3)->count(), 2);
+        $avgDieC3 = round($diec3 / Sebaran::where('cluster_id', 3)->count(), 2);
         
         if ($treatedCluster1 == $avgTreatedC1 && $confirmCluster1 == $avgConfirmC1 && 
             $helaedCluster1 == $avgHealedC1 && $dieCluster1 == $avgDieC1 && 
@@ -145,6 +143,7 @@ class ResultController extends Controller
             $treatedCluster3 == $avgTreatedC3 && $confirmCluster3 == $avgConfirmC3 && 
             $helaedCluster3 == $avgHealedC3 && $dieCluster3 == $avgDieC3
             ) {
+                // dd($count);
                 $looping = False;
         } else {
             $treatedCluster1 = $avgTreatedC1;
@@ -161,11 +160,13 @@ class ResultController extends Controller
             $confirmCluster3 = $avgConfirmC3;
             $helaedCluster3 = $avgHealedC3;
             $dieCluster3 = $avgDieC3;
+
+            $count += 1;
         }
         }
 
         $nav = "active";
         $data = Sebaran::all();
-        return view('dashboard.hitung.detail', compact('nav', 'data'));
+        return view('dashboard.hitung.detail', compact('nav', 'data', 'count'));
     }
 }
