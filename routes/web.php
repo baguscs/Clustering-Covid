@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SebaranController;
+use App\Http\Controllers\ResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,7 @@ Route::middleware([
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
     Route::resource('sebaran', SebaranController::class);
+
+    Route::get('hitung', [ResultController::class, 'index'])->name('result');
+    Route::get('detail-hasil', [ResultController::class, 'detail'])->name('detailResult');
 });

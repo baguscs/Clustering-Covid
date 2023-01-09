@@ -49,8 +49,8 @@
                     </li>
 
                     <h3 class="menu-title">Analisis</h3><!-- /.menu-title -->
-                    <li>
-                        <a href="widgets.html"> <i class="menu-icon fa fa-search"></i>Hitung Sebaran </a>
+                    <li class="@stack('navResult')">
+                        <a href="{{ route('result') }}"> <i class="menu-icon fa fa-search"></i>Hitung Sebaran </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

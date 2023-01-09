@@ -24,4 +24,14 @@ class Sebaran extends Model
     {
         return $this->belongsTo(Provinsi::class, 'provinsi_id');
     }
+
+    /**
+     * Get the user that owns the Sebaran
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cluster()
+    {
+        return $this->belongsTo(Cluster::class, 'cluster_id');
+    }
 }

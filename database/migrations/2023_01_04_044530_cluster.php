@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sebarans', function (Blueprint $table) {
+        Schema::create('cluster', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("provinsi_id")->constrained()->cascadeOnDelete("cascade");
-            $table->string("treated");
-            $table->string("confirmation");
-            $table->string("healed");
-            $table->string("die");
-            $table->Integer('cluster_id')->nullable();
+            $table->string("name");
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sebarans');
+        //
     }
 };
