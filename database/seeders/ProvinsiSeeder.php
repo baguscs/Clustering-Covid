@@ -21,7 +21,7 @@ class ProvinsiSeeder extends Seeder
                 "Kepulauan Riau", "Lampung", "Maluku", "Maluku Utara", "Nusa Tenggara Barat", 
                 "Nusa Tenggara Timur", "Papua", "Papua Barat", "Riau", "Sulawesi Barat", "Sulawesi Selatan", 
                 "Sulawesi Tengah", "Sulawesi Tenggara", "Sulawesi Utara", "Sumatera Barat", "Sumatera Selatan",
-                "Sumatera Utara", "Yogyakarya"   
+                "Sumatera Utara", "Yogyakarya", "Papua Selatan", "Papua Tengah", "Papua Pegunungan", "Papua Barat Daya"
                 ];
 
         for ($i=0; $i < count($data); $i++) { 
