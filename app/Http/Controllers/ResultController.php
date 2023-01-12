@@ -143,7 +143,6 @@ class ResultController extends Controller
             $treatedCluster3 == $avgTreatedC3 && $confirmCluster3 == $avgConfirmC3 && 
             $helaedCluster3 == $avgHealedC3 && $dieCluster3 == $avgDieC3
             ) {
-                // dd($count);
                 $looping = False;
         } else {
             $treatedCluster1 = $avgTreatedC1;
@@ -167,6 +166,33 @@ class ResultController extends Controller
 
         $nav = "active";
         $data = Sebaran::all();
-        return view('dashboard.hitung.detail', compact('nav', 'data', 'count'));
+
+        $provinsisC1 = [];
+        $resultC1 = [];
+
+        $provinsisC2 = [];
+        $resultC2 = [];
+
+        $provinsisC3 = [];
+        $resultC3 = [];
+
+        foreach ($data as $value) {
+            if ($value->cluster_id == 1) {
+                $provinsisC1[] = $value->provinsi->name;
+                $resultC1[] = $value->confirmation;
+            }
+            elseif ($value->cluster_id == 2) {
+                $provinsisC2[] = $value->provinsi->name;
+                $resultC2[] = $value->confirmation;
+            }
+            elseif ($value->cluster_id == 3) {
+                $provinsisC3[] = $value->provinsi->name;
+                $resultC3[] = $value->confirmation;
+            }
+        }
+
+        return view('dashboard.hitung.detail', compact('nav', 'data', 'count', 'provinsisC1',
+            'resultC1', 'provinsisC2', 'resultC2', 'provinsisC3', 'resultC3'
+        ));
     }
 }

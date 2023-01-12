@@ -58,16 +58,16 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <p>chart cluster 1</p>
-                            <canvas id="chartCluster1" style="width:100%;max-width:600px"></canvas>
+                            <p>Grafik Orang Terkonfirmasi Pada Cluster 1</p>
+                            <canvas id="chartCluster1" width="200" height="200"></canvas>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <p>chart cluster 2</p>
-                            <canvas id="chartCluster2" style="width:100%;max-width:600px"></canvas>
+                            <p>Grafik Orang Terkonfirmasi Pada Cluster 2</p>
+                            <canvas id="chartCluster2" width="200" height="200"></canvas>
                         </div>
                     </div>
                 </div>
@@ -76,8 +76,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <p>chart cluster 3</p>
-                            <canvas id="chartCluster3" style="width:100%;max-width:600px"></canvas>
+                            <p>Grafik Orang Terkonfirmasi Pada Cluster 3</p>
+                            <canvas id="chartCluster3" width="200" height="200"></canvas>
                         </div>
                     </div>
                 </div>
@@ -105,74 +105,84 @@
     <script src="{{ asset('vendors/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('assets/js/init-scripts/data-table/datatables-init.js') }}"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script>
-        var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-        var yValues = [55, 49, 44, 24, 15];
-        var barColors = ["red", "green","blue","orange","brown"];
+        var cluster1 = document.getElementById('chartCluster1').getContext('2d');
+        var cluster2 = document.getElementById('chartCluster2').getContext('2d');
+        var cluster3 = document.getElementById('chartCluster3').getContext('2d');
 
-        new Chart("chartCluster1", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-            backgroundColor: barColors,
-            data: yValues
-            }]
-        },
-        options: {
-            legend: {display: false},
-            title: {
-            display: true,
-            text: "World Wine Production 2018"
-            }
-        }
-        });
-    </script>
-    <script>
-        var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-        var yValues = [55, 49, 44, 24, 15];
-        var barColors = ["red", "green","blue","orange","brown"];
+        const backgroundColor = [
+            '#FF8B13', '#820000', '#4E6C50', '#3D1766', '#0081B4', '#6C00FF',
+            '#579BB1', '#3C2A21', '#227C70', '#6D67E4', '#C147E9', '#2A3990',
+            '#285430', '#735F32', '#4FA095', '#7FBCD2', '#E3C770', '#553939', 
+            '#6FEDD6', '#C55300', '#781C68', '#C21010', '#FFE898', '#31087B',
+            '#0096FF', '#B2A4FF', '#A47E3B', '#1F4690', '#F37878', '#2146C7', 
+            '#9A1663', '#00ABB3', '#FF6E31', '#B08BBB', '#F5EA5A', '#4E6C50', 
+            '#6F1AB6', '#1687A7'
+        ];
 
-        new Chart("chartCluster2", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-            backgroundColor: barColors,
-            data: yValues
-            }]
-        },
-        options: {
-            legend: {display: false},
-            title: {
-            display: true,
-            text: "World Wine Production 2018"
+        new Chart(cluster1, {
+            type: 'bar',
+            data: {
+                labels: {!!json_encode($provinsisC1)!!},
+                datasets: [{
+                    label: 'Jumlah terkonfirmasi',
+                    data: {!!json_encode($resultC1)!!},
+                    backgroundColor: backgroundColor,
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
         });
-    </script>
-    <script>
-        var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-        var yValues = [55, 49, 44, 24, 15];
-        var barColors = ["red", "green","blue","orange","brown"];
 
-        new Chart("chartCluster3", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-            backgroundColor: barColors,
-            data: yValues
-            }]
-        },
-        options: {
-            legend: {display: false},
-            title: {
-            display: true,
-            text: "World Wine Production 2018"
+        new Chart(cluster2, {
+            type: 'bar',
+            data: {
+                labels: {!!json_encode($provinsisC2)!!},
+                datasets: [{
+                    label: 'Jumlah terkonfirmasi',
+                    data: {!!json_encode($resultC2)!!},
+                    backgroundColor: backgroundColor,
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
         });
+
+        new Chart(cluster3, {
+            type: 'bar',
+            data: {
+                labels: {!!json_encode($provinsisC3)!!},
+                datasets: [{
+                    label: 'Jumlah terkonfirmasi',
+                    data: {!!json_encode($resultC3)!!},
+                    backgroundColor: backgroundColor,
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
     </script>
 @endpush
