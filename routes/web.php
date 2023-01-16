@@ -31,8 +31,6 @@ Route::middleware([
 
     Route::resource('sebaran', SebaranController::class);
 
-    Route::get('sebaran/export-pdf', [SebaranController::class, 'export'])->name('exportPDF');
-
     Route::get('hitung', [ResultController::class, 'index'])->name('result');
     Route::get('detail-hasil', [ResultController::class, 'detail'])->name('detailResult');
 });

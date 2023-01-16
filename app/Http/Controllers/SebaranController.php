@@ -119,13 +119,4 @@ class SebaranController extends Controller
         $sebaran->delete();
         return redirect()->back()->with('message', 'Berhasil Mengahapus Data Sebaran');
     }
-
-    public function export()
-    {
-        $data = Sebaran::all();
-        view()->share('users-pdf',$users);
-        $pdf = PDF ::loadView('dashboard.sebaran.index', compact('data'));
-        return $pdf->download('file-pdf.pdf'); 
-        // return view('dashboard.sebaran.index', compact('data'));
-    }
 }

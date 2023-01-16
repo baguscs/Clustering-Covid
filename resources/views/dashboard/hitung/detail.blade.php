@@ -58,7 +58,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <p>Grafik Orang Terkonfirmasi Pada Cluster 1</p>
+                            <p>Grafik Orang Terkonfirmasi Pada Cluster 1 (Zona Hijau)</p>
                             <canvas id="chartCluster1" width="200" height="200"></canvas>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <p>Grafik Orang Terkonfirmasi Pada Cluster 2</p>
+                            <p>Grafik Orang Terkonfirmasi Pada Cluster 2 (Zona Kuning)</p>
                             <canvas id="chartCluster2" width="200" height="200"></canvas>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <p>Grafik Orang Terkonfirmasi Pada Cluster 3</p>
+                            <p>Grafik Orang Terkonfirmasi Pada Cluster 3 (Zona Merah)</p>
                             <canvas id="chartCluster3" width="200" height="200"></canvas>
                         </div>
                     </div>
