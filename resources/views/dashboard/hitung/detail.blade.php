@@ -129,15 +129,11 @@
                     label: 'Jumlah terkonfirmasi',
                     data: {!!json_encode($resultC1)!!},
                     backgroundColor: backgroundColor,
-                }]
+                }] 
             },
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                legend: {
+                    display: false
                 }
             }
         });
@@ -147,18 +143,13 @@
             data: {
                 labels: {!!json_encode($provinsisC2)!!},
                 datasets: [{
-                    label: 'Jumlah terkonfirmasi',
                     data: {!!json_encode($resultC2)!!},
                     backgroundColor: backgroundColor,
                 }]
             },
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                legend: {
+                    display: false
                 }
             }
         });
@@ -174,12 +165,8 @@
                 }]
             },
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                legend: {
+                    display: false
                 }
             }
         });
